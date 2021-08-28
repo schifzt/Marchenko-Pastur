@@ -1,19 +1,19 @@
 // Read eigenvalues from csv
 $.ajax({
-	url: "eigenvals.csv",
+	url: 'eigenvals.csv',
 	async: false,
 	success: function (csvd) {
 		eigenvals = [].concat(...$.csv.toArrays(csvd)).map(x => parseFloat(x));
 		a = eigenvals.pop();
 	},
-	dataType: "",
+	dataType: 'text',
 	complete: function () {
 		// call a function on complete 
 	}
 });
 
 
-// Define pdf
+// Define p.d.f.
 var density = function (x, a) {
 	let lb = (1 - Math.sqrt(a)) ** 2;
 	let ub = (1 + Math.sqrt(a)) ** 2;
@@ -46,15 +46,25 @@ const x = [...Array(n).keys()].map(function (x) { return x * step; });
 const y = x.map(x => density(x, a));
 
 
+// Define color pallet
+const blue = { line: 'rgba(0, 0, 255, 1)', fill: 'rgba(120, 120, 255, 0.75)' }
+const red = { line: 'rgba(255, 0, 0, 1)', fill: 'rgba(255, 128, 128, 0.75)' }
+
+
 // Define layout of plot
 var layout = {
 	xaxis: {
-		type: "linear", autorange: true, mirror: 'all'
+		type: "linear", autorange: true, mirror: 'all',
+		ticks: 'inside', tick0: '0', dtick: '0.5',
+		rangemode: 'nonnegative',
+		showgrid: true, showline: true, showticklabels: true
 	},
 	yaxis: {
-		type: "linear", autorange: true, mirror: 'all'
+		type: "linear", autorange: true, mirror: 'all',
+		ticks: 'inside', tick0: '0', dtick: '0.2',
+		rangemode: 'nonnegative',
+		showgrid: true, showline: true, showticklabels: true
 	},
-	margin: { t: 0 }
 };
 
 var layout_icon = {
@@ -68,14 +78,17 @@ var layout_icon = {
 };
 
 
+
 // Line
 lineplot = document.getElementById('lineplot');
 var trace1 = {
 	x: x,
 	y: y,
 	line: {
-		color: 'rgba(0, 0, 255)',
+		color: red.line,
+		dash: 'dot'
 	},
+	name: 'p.d.f.',
 }
 Plotly.plot(lineplot, [trace1], layout, { showSendToCloud: false });
 
@@ -86,10 +99,11 @@ var trace2 = {
 	x: x,
 	y: y,
 	fill: 'tonexty',
-	fillcolor: 'rgba(120, 120, 255, 0.75)',
+	fillcolor: red.fill,
 	line: {
-		color: 'rgba(0, 0, 255)',
+		color: red.line,
 	},
+	name: 'p.d.f.',
 }
 
 Plotly.plot(fillplot, [trace2], layout, { showSendToCloud: false });
@@ -107,19 +121,19 @@ var trace3 = {
 	type: 'histogram',
 	histnorm: 'probability density',
 	marker: {
-		color: "rgba(120, 120, 255, 1)",
+		color: red.fill,
 		line: {
-			color: "rgba(0, 0, 255, 1)",
+			color: red.line,
 			width: 1
 		}
 	},
-	opacity: 0.75,
 	autobinx: false,
+	name: 'empirical',
 }
 Plotly.plot(histgram, [trace3], layout, { showSendToCloud: false });
 
 
 // Overlay
 overlayplot = document.getElementById('overlayplot');
-Plotly.plot(overlayplot, [trace2, trace3], layout, { showSendToCloud: false });
+Plotly.plot(overlayplot, [trace1, trace3], layout, { showSendToCloud: false });
 

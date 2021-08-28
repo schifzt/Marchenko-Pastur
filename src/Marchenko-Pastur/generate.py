@@ -1,7 +1,7 @@
 import numpy as np
 
-a = 0.3    # d/n
-n = 1000
+a = 0.1    # d/n
+n = 5000
 d = int(n*a)
 
 # X: d x n matrices

@@ -1,54 +1,15 @@
 // Read eigenvalues from csv
-$.ajax({
-	url: 'eigenvals.csv',
-	async: false,
-	success: function (csvd) {
-		eigenvals = [].concat(...$.csv.toArrays(csvd)).map(x => parseFloat(x));
-		a = eigenvals.pop();
-	},
-	dataType: 'text',
-	complete: function () {
-		// call a function on complete 
-	}
-});
+const eigenvals = read_csv('eigenvals.csv').map(x => parseFloat(x));
+const a = read_csv('params.csv').map(x => parseFloat(x))[0];
 
 
-// Define p.d.f.
-var density = function (x, a) {
-	let lb = (1 - Math.sqrt(a)) ** 2;
-	let ub = (1 + Math.sqrt(a)) ** 2;
+// Read pdf from csv
+const points = read_csv('density.csv');
+const x = points[0].map(x => parseFloat(x));
+const y = points[1].map(x => parseFloat(x));
 
-	if (0 < a && a < 1) {
-		if (lb <= x && x <= ub) {
-			return 1 / (2 * Math.PI * x * a) * Math.sqrt((ub - x) * (x - lb));
-		} else {
-			return 0;
-		}
-	} else if (1 <= a) {
-		if (lb <= x && x <= ub) {
-			return 1 / (2 * Math.PI * x * a) * Math.sqrt((ub - x) * (x - lb));
-		} else if (x == 0) {
-			return 1 - 1 / a;
-		} else {
-			return 0;
-		}
-	} else {
-		console.error("a must satisfy a > 0");
-	}
-}
-
-// Define parameters
-const domain = [0, Math.max(...eigenvals) + 1];
-const step = 0.01;
-const n = parseInt(domain[1] - domain[0]) / step;
-
-const x = [...Array(n).keys()].map(function (x) { return x * step; });
-const y = x.map(x => density(x, a));
-
-
-// Define color pallet
-const blue = { line: 'rgba(0, 0, 255, 1)', fill: 'rgba(120, 120, 255, 0.75)' }
-const red = { line: 'rgba(255, 0, 0, 1)', fill: 'rgba(255, 128, 128, 0.75)' }
+// Define color theme
+const theme = theme;
 
 
 // Define layout of plot
@@ -85,7 +46,7 @@ var trace1 = {
 	x: x,
 	y: y,
 	line: {
-		color: red.line,
+		color: theme.line,
 		dash: 'dot'
 	},
 	name: 'p.d.f.',
@@ -99,9 +60,9 @@ var trace2 = {
 	x: x,
 	y: y,
 	fill: 'tonexty',
-	fillcolor: red.fill,
+	fillcolor: theme.fill,
 	line: {
-		color: red.line,
+		color: theme.line,
 	},
 	name: 'p.d.f.',
 }
@@ -121,9 +82,9 @@ var trace3 = {
 	type: 'histogram',
 	histnorm: 'probability density',
 	marker: {
-		color: red.fill,
+		color: theme.fill,
 		line: {
-			color: red.line,
+			color: theme.line,
 			width: 1
 		}
 	},

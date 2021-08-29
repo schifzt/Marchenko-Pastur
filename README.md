@@ -1,5 +1,4 @@
-# RMT-etude
+# proto-RMT
 
-## Marchenko-Pastur
-
-## Circular law
+- [x] Marchenko-Pastur
+- [ ] Circular law

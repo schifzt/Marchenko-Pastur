@@ -1,6 +1,6 @@
 import numpy as np
 
-a = 0.5    # d/n
+a = 0.2    # d/n
 n = 1000
 d = int(n*a)
 
@@ -17,6 +17,7 @@ X = np.random.multivariate_normal(mean, cov, d)
 Y = X@X.T / n
 
 eigenvals = np.linalg.eigvals(Y)
+eigenvals = eigenvals.real
 
 np.savetxt('eigenvals.csv', eigenvals, delimiter=',', fmt='%.3f')
 
@@ -36,7 +37,7 @@ def density(x, a):
         return 0
 
 
-domain = [0, np.max(eigenvals) + 1]
+domain = [0, np.max(eigenvals).real + 1]
 step = 0.01
 n = int(domain[1] - domain[0]) / step
 

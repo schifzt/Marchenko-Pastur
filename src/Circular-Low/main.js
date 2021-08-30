@@ -1,7 +1,9 @@
 // Read eigenvalues from csv
-const eigenvals = read_csv('eigenvals.csv').map(x => parseFloat(x));
-const a = read_csv('params.csv').map(x => parseFloat(x))[0];
+const eigenvals = read_csv('eigenvals.csv')
+const eigenvals_real = eigenvals[0].map(x => parseFloat(x));
+const eigenvals_imag = eigenvals[1].map(x => parseFloat(x));
 
+// const a = read_csv('params.csv').map(x => parseFloat(x))[0];
 
 // Read pdf from csv
 const points = read_csv('density.csv');
@@ -9,21 +11,19 @@ const x = points[0].map(x => parseFloat(x));
 const y = points[1].map(x => parseFloat(x));
 
 // Define color theme
-const theme = blue;
+const theme = red;
 
 
 // Define layout of plot
 var layout = {
 	xaxis: {
-		type: "linear", autorange: true, mirror: 'all',
+		type: "path", autorange: true, mirror: 'all',
 		ticks: 'inside', nticks: 10,
-		rangemode: 'nonnegative',
 		showgrid: true, showline: true, showticklabels: true
 	},
 	yaxis: {
-		type: "linear", autorange: true, mirror: 'all',
+		type: "path", autorange: true, mirror: 'all',
 		ticks: 'inside', nticks: 10,
-		rangemode: 'nonnegative',
 		showgrid: true, showline: true, showticklabels: true
 	},
 };
@@ -48,7 +48,6 @@ var trace1 = {
 	y: y,
 	line: {
 		color: theme.line,
-		dash: 'dot',
 		width: 2
 	}
 }
@@ -77,23 +76,20 @@ iconplot = document.getElementById('iconplot');
 Plotly.plot(iconplot, [trace2], layout_icon, { staticPlot: true });
 
 
-// Histogram
-histgram = document.getElementById('histgram');
+// Scatter
+scatterplot = document.getElementById('scatterplot');
 var trace3 = {
 	name: 'empirical',
-	x: eigenvals,
-	type: 'histogram',
-	histnorm: 'probability density',
+	x: eigenvals_real,
+	y: eigenvals_imag,
+	mode: 'markers',
+	type: 'scatter',
 	marker: {
 		color: theme.fill,
-		line: {
-			color: theme.line,
-			width: 2
-		}
-	},
-	autobinx: false
+		size: 2
+	}
 }
-Plotly.plot(histgram, [trace3], layout, { showSendToCloud: false });
+Plotly.plot(scatterplot, [trace3], layout, { showSendToCloud: false });
 
 
 // Overlay

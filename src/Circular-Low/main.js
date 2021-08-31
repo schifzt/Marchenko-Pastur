@@ -1,98 +1,39 @@
 // Read eigenvalues from csv
-const eigenvals = read_csv('eigenvals.csv')
-const eigenvals_real = eigenvals[0].map(x => parseFloat(x));
-const eigenvals_imag = eigenvals[1].map(x => parseFloat(x));
+const eigenvals = new Points2D('eigenvals.csv');
+const a = read_csv('params.csv').map(x => parseFloat(x))[0];
 
-// const a = read_csv('params.csv').map(x => parseFloat(x))[0];
 
 // Read pdf from csv
-const points = read_csv('density.csv');
-const x = points[0].map(x => parseFloat(x));
-const y = points[1].map(x => parseFloat(x));
-
-// Define color theme
-const theme = red;
+const curve = new Points2D('support_boundary.csv');
 
 
-// Define layout of plot
-var layout = {
-	xaxis: {
-		type: "path", autorange: true, mirror: 'all',
-		ticks: 'inside', nticks: 10,
-		showgrid: true, showline: true, showticklabels: true
-	},
-	yaxis: {
-		type: "path", autorange: true, mirror: 'all',
-		ticks: 'inside', nticks: 10,
-		showgrid: true, showline: true, showticklabels: true
-	},
-};
-
-var layout_icon = {
-	xaxis: {
-		showgrid: false, showline: false, showticklabels: false
-	},
-	yaxis: {
-		showgrid: false, showline: false, showticklabels: false
-	},
-	margin: { t: 0 },
-};
-
+// Define color color
+const color = red;
 
 
 // Line
-lineplot = document.getElementById('lineplot');
-var trace1 = {
-	name: 'p.d.f.',
-	x: x,
-	y: y,
-	line: {
-		color: theme.line,
-		width: 2
-	}
-}
-Plotly.plot(lineplot, [trace1], layout, { showSendToCloud: false });
+lineplot = document.getElementById('ax0');
+trace1 = supportBoundary(curve, color);
+Plotly.plot(lineplot, [trace1], template);
 
 
 // Fill
-fillplot = document.getElementById('fillplot');
-var trace2 = {
-	name: 'p.d.f.',
-	x: x,
-	y: y,
-	fill: 'tonexty',
-	fillcolor: theme.fill,
-	line: {
-		color: theme.line,
-		width: 2
-	}
-}
-
-Plotly.plot(fillplot, [trace2], layout, { showSendToCloud: false });
+fillplot = document.getElementById('ax1');
+trace2 = supportBoundary(curve, color, fill = true);
+Plotly.plot(fillplot, [trace2], template);
 
 
 // icon
-iconplot = document.getElementById('iconplot');
-Plotly.plot(iconplot, [trace2], layout_icon, { staticPlot: true });
+iconplot = document.getElementById('ax2');
+Plotly.plot(iconplot, [trace2], template_icon);
 
 
 // Scatter
-scatterplot = document.getElementById('scatterplot');
-var trace3 = {
-	name: 'empirical',
-	x: eigenvals_real,
-	y: eigenvals_imag,
-	mode: 'markers',
-	type: 'scatter',
-	marker: {
-		color: theme.fill,
-		size: 2
-	}
-}
-Plotly.plot(scatterplot, [trace3], layout, { showSendToCloud: false });
+scatterplot = document.getElementById('ax3');
+trace3 = scatter(eigenvals, color);
+Plotly.plot(scatterplot, [trace3], template);
 
 
 // Overlay
-overlayplot = document.getElementById('overlayplot');
-Plotly.plot(overlayplot, [trace1, trace3], layout, { showSendToCloud: false });
-
+overlayplot = document.getElementById('ax4');
+Plotly.plot(overlayplot, [trace1, trace3], template);

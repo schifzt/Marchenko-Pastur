@@ -17,7 +17,9 @@ X = np.random.multivariate_normal(mean, cov, d)
 Y = X@X.T / n
 
 eigenvals = np.linalg.eigvals(Y)
-eigenvals = eigenvals.real
+
+# eigenvals must be 2 x n array
+eigenvals = np.array([eigenvals.real, eigenvals.imag])
 
 np.savetxt('eigenvals.csv', eigenvals, delimiter=',', fmt='%.3f')
 

@@ -18,6 +18,8 @@ cov = np.identity(n) / n
 X = np.random.multivariate_normal(mean, cov, n)
 
 eigenvals = np.linalg.eigvals(X)
+
+# eigenvals must be 2 x n array
 eigenvals = np.array([eigenvals.real, eigenvals.imag])
 
 np.savetxt('eigenvals.csv', eigenvals, delimiter=',', fmt='%.3f')
@@ -41,4 +43,4 @@ y = v[:, 1]
 
 points = np.array([x, y])
 
-np.savetxt('density.csv', points, delimiter=',', fmt='%.3f')
+np.savetxt('support_boundary.csv', points, delimiter=',', fmt='%.3f')

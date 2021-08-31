@@ -5,7 +5,7 @@ import matplotlib.cm as cm
 import matplotlib.pyplot as plt
 
 
-n = 5000
+n = 1000
 
 params = np.array([n])
 np.savetxt('params.csv', params, delimiter=',', fmt='%.3f')

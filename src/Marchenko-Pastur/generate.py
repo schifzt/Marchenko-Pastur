@@ -28,7 +28,7 @@ def density(x, a):
     lb = (1-np.sqrt(a))**2
     ub = (1+np.sqrt(a))**2
 
-    if x == 0 and 1 <= a:
+    if 1 <= a and x == 0:
         return 1 - 1/a
 
     if lb <= x and x <= ub:

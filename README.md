@@ -1,4 +1,5 @@
 # proto-RMT
 
 - [x] Marchenko-Pastur
-- [ ] Circular law
+- [x] Circular Law
+- [ ] Wigner's Semicircle law

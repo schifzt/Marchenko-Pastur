@@ -1,1 +1,0 @@
-ls -d */ | cut -f1 -d'/' > dirname.txt

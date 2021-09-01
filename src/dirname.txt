@@ -1,2 +1,3 @@
-Circular_Low
-Marchenko_Pastur
+<option value="Circular_Law">Circular_Law</option>
+<option value="Marchenko_Pastur">Marchenko_Pastur</option>
+<option value="Semicircle_Law">Semicircle_Law</option>

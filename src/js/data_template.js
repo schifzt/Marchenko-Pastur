@@ -20,13 +20,13 @@ const density1d = function (points2d, color, fill = false) {
 };
 
 
-const histogram1d = function (array1d, color, fill = false) {
+const histogram1d = function (points2d, color, fill = false) {
 
 	let r = {
 		name: 'empirical',
 		type: 'histogram',
 		histnorm: 'probability density',
-		x: array1d,
+		x: points2d.x,
 		marker: {
 			color: color.fill,
 			line: {

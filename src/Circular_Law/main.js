@@ -1,10 +1,11 @@
 // Read eigenvalues from csv
-const eigenvals = new Points2D('Circular_Low/eigenvals.csv');
-const a = read_csv('Circular_Low/params.csv').map(x => parseFloat(x))[0];
+const pwd = 'Circular_Law/';
+const eigenvals = new Points2D(pwd + 'eigenvals.csv');
+const a = read_csv(pwd + 'params.csv').map(x => parseFloat(x))[0];
 
 
 // Read pdf from csv
-const curve = new Points2D('Circular_Low/support_boundary.csv');
+const curve = new Points2D(pwd + 'support_boundary.csv');
 
 
 // Define color color

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import numpy as np
 
 a = 0.2    # d/n

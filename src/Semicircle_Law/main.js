@@ -1,5 +1,5 @@
 // Read eigenvalues from csv
-const pwd = 'Marchenko_Pastur/';
+const pwd = 'Semicircle_Law/';
 const eigenvals = new Points2D(pwd + 'eigenvals.csv');
 const a = read_csv(pwd + 'params.csv').map(x => parseFloat(x))[0];
 

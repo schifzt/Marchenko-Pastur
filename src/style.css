@@ -1,0 +1,9 @@
+#dir_selecter {
+  padding: 5px;
+  width: 200px;
+}
+
+.plot_area {
+  display: flex;
+  flex-flow: row wrap;
+}

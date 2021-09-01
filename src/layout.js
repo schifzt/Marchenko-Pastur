@@ -13,7 +13,9 @@ const layout = {
 		x: 1,
 		xanchor: 'right',
 		y: 1
-	}
+	},
+	dragmode: 'pan',
+	hovermode: 'closest'
 };
 
 
@@ -24,7 +26,13 @@ const layout_icon = {
 	yaxis: {
 		showgrid: false, showline: false, showticklabels: false
 	},
+	dragmode: false, hovermode: false,
 	margin: { t: 0 }
+};
+
+const config = {
+	scrollZoom: true,
+	showSendToCloud: false
 };
 
 
@@ -32,7 +40,6 @@ const layout_icon = {
 const template = {
 	template: Plotly.makeTemplate({
 		layout: layout,
-		config: { showSendToCloud: false }
 	})
 };
 
@@ -40,6 +47,5 @@ const template = {
 const template_icon = {
 	template: Plotly.makeTemplate({
 		layout: layout_icon,
-		config: { showSendToCloud: false }
 	})
 };

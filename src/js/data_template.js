@@ -32,12 +32,15 @@ const histogram1d = function (points2d, color, fill = false) {
 			line: {
 				color: color.fill,
 				width: 2
+			},
+			pattern: {
+				fillmode: 'overlay'
 			}
 		},
+		opacity: 0.8,
 		xbins: {
-			size: 0.1
-		},
-		nbinsx: 10,
+			size: 0.05
+		}
 	};
 
 	return r;

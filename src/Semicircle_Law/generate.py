@@ -12,7 +12,7 @@ n = 5000
 params = np.array([n])
 np.savetxt('params.csv', params, delimiter=',', fmt='%.3f')
 
-# Generate a random matrix
+# Generate a Gaussian Orthogonal Ensemble(GOE)
 # X: n x n matrices
 #     X_ij: N(0,4)
 # Y: n x n symmetric matrices
@@ -35,6 +35,7 @@ np.savetxt('eigenvals.csv', eigenvals, delimiter=',', fmt='%.3f')
 
 
 # Generate p.d.f. points
+#     y = 1/(2*pi)*np.sqrt(4-x**2)
 
 step = 0.025
 x = np.arange(-3.0, 3.0, step)

@@ -14,6 +14,7 @@ const config_base = {
 	displaylogo: false,
 	modeBarButtonsToRemove: [
 		'pan2d',
+		`select2d`,
 		'zoomIn2d',
 		'zoomOut2d',
 		'lasso2d',
@@ -21,7 +22,7 @@ const config_base = {
 		`resetScale2d`,
 		`sendDataToCloud`,
 		'hoverClosestCartesian',
-		'hoverCompareCartesian',
+		'hoverCompareCartesian'
 	]
 }
 

@@ -6,22 +6,32 @@ const layout_bare = {
 		showgrid: true, showline: true, showticklabels: true,
 		rangemode: 'tozero',
 		spikedash: `solid`,
-		spikethickness: `2`
+		spikethickness: `2`,
+		automargin: false
 	},
 	yaxis: {
 		autorange: true, mirror: 'all', ticks: 'inside',
 		showgrid: true, showline: true, showticklabels: true,
 		rangemode: 'tozero',
 		spikedash: `solid`,
-		spikethickness: `2`
+		spikethickness: `2`,
+		automargin: false,
 	},
 	legend: {
 		x: 1,
 		xanchor: 'right',
 		y: 1
 	},
+	modebar: {
+		orientation: `h`
+	},
 	margin: {
-		pad: 0
+		autoexpand: false,
+		pad: 0,
+		t: 25, // fix
+		r: 20, // fix
+		b: 50, // shift the same amount
+		l: 55, // shift the same amount
 	}
 };
 
@@ -37,6 +47,9 @@ const layout_icon_bare = {
 	},
 	margin: {
 		t: 0,
+		b: 0,
+		l: 0,
+		r: 0,
 	}
 };
 

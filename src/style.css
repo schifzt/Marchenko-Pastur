@@ -1,5 +1,6 @@
-#dir_selecter {
+.selecter {
   padding: 5px;
+  margin-left: 10px;
   width: 200px;
 }
 

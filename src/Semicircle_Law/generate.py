@@ -53,4 +53,4 @@ y = v[:, 1]
 
 points = np.array([x, y])
 
-np.savetxt('density.csv', points, delimiter=',', fmt='%.3f')
+np.savetxt('curve.csv', points, delimiter=',', fmt='%.3f')

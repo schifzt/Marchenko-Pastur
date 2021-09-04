@@ -13,10 +13,9 @@ const config_base = {
 	displayModeBar: true,
 	displaylogo: false,
 	modeBarButtonsToRemove: [
-		'pan2d',
-		`select2d`,
 		'zoomIn2d',
 		'zoomOut2d',
+		`select2d`,
 		'lasso2d',
 		`autoScale2d`,
 		`resetScale2d`,

@@ -49,4 +49,4 @@ x = np.arange(domain[0], domain[1], step)
 y = np.frompyfunc(density, 2, 1)(x, a)
 points = np.array([x, y])
 
-np.savetxt('density.csv', points, delimiter=',', fmt='%.3f')
+np.savetxt('curve.csv', points, delimiter=',', fmt='%.3f')

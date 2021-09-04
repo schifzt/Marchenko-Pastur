@@ -1,3 +1,8 @@
+vscode
+Circular_Law
+Marchenko_Pastur
+Semicircle_Law
+<option value="vscode">vscode</option>
 <option value="Circular_Law">Circular_Law</option>
 <option value="Marchenko_Pastur">Marchenko_Pastur</option>
 <option value="Semicircle_Law">Semicircle_Law</option>

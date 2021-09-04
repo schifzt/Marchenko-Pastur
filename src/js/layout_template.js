@@ -28,9 +28,9 @@ const layout_bare = {
 	margin: {
 		autoexpand: false,
 		pad: 0,
-		t: 25, // fix
+		t: 30, // fix
 		r: 20, // fix
-		b: 50, // shift the same amount
+		b: 45, // shift the same amount
 		l: 55, // shift the same amount
 	}
 };

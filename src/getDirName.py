@@ -8,10 +8,15 @@ subdirs = list(
     filter(lambda s: s != 'js',
            map(lambda s: s.strip('./'), subdirs)))
 
+dirs = ""
 html = ""
 for s in subdirs:
+    dirs += s
+    dirs += "\n"
+
     html += "<option value=\"{}\">{}</option>".format(s, s)
     html += "\n"
 
 with open("dirname.txt", mode="w") as f:
+    f.write(dirs)
     f.write(html)

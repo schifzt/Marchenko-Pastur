@@ -1,4 +1,4 @@
-const density1d = function (points2d, color, fill = false) {
+const density1D = function (points2d, color, fill = false) {
 
 	let r = {
 		name: 'p.d.f.',
@@ -20,7 +20,7 @@ const density1d = function (points2d, color, fill = false) {
 };
 
 
-const histogram1d = function (points2d, color, fill = false) {
+const histogram1D = function (points2d, color, fill = false) {
 
 	let r = {
 		name: 'empirical',

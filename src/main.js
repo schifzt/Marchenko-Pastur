@@ -27,7 +27,7 @@ const f = function (dirname) {
 
 	createSelecter(plot_selecter, "Select a plot type", true, true);
 	Object.keys(plot_types).forEach(function (key) {
-		createSelecter(plot_selecter, key, plot_types[key], false);
+		createSelecter(plot_selecter, key, plot_types[key], !plot_types[key]);
 	});
 
 }
@@ -108,8 +108,6 @@ if (localStorage.hasOwnProperty('plot_type')) {
 
 	if (curve !== null && eigenvals !== null && plot_type !== null) {
 		g(curve, eigenvals, plot_type);
-	} else {
-		console.log("shit");
 	}
 }
 

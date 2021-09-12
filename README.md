@@ -2,4 +2,4 @@
 
 - [x] Marchenko-Pastur
 - [x] Circular Law
-- [ ] Wigner's Semicircle law
+- [x] Wigner's Semicircle law

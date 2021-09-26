@@ -1,6 +1,7 @@
 .vscode/
-tests/
+tests/*/
 tests/*_.*
+tests/*.html
 
 *.csv
 
